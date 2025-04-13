@@ -5,7 +5,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = "spring-boot-crud-mysql-k8s-example-2"
-        IMAGE_TAG = "v1.0.0-${BUILD_NUMBER}"    // or use BRANCH_NAME if you split pipelines
+        IMAGE_TAG = "v1.0.0-${BUILD_NUMBER}"
         DOCKERHUB_USER = "sayantan2k21"
     }
 
@@ -20,7 +20,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .'
+                    sh 'docker build --no-cache -t ${IMAGE_NAME}:${IMAGE_TAG} .'
                 }
             }
         }
@@ -51,9 +51,19 @@ pipeline {
                     """
 
                     // Apply manifests
+                    // create the namepace for mysql
+                    
+                    sh 'kubectl apply -f ns-mysql-db.yaml' 
                     sh 'kubectl apply -f mysql-configMap.yaml'
                     sh 'kubectl apply -f mysql-secrets.yaml'
+                    sh 'kubectl apply -f mysql-pvc.yaml'
                     sh 'kubectl apply -f mysql-deployment.yaml'
+                    
+
+                    // deploy the springboot-v1.0 
+                    sh 'kubectl apply -f microservice-v1-ns.yaml'
+                    sh 'kubectl apply -f app-conigMap.yaml'
+                    sh 'kubectl apply -f app-secrets.yaml'
                     sh 'kubectl apply -f app-deployment-rendered.yaml'
                     sh 'kubectl apply -f ingress.yaml'
                 }
