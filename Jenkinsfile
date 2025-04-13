@@ -5,7 +5,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = "spring-boot-crud-mysql-k8s-example-2"
-        IMAGE_TAG = "master-${BUILD_NUMBER}"    // or use BRANCH_NAME if you split pipelines
+        IMAGE_TAG = "v1.0.0-${BUILD_NUMBER}"    // or use BRANCH_NAME if you split pipelines
         DOCKERHUB_USER = "sayantan2k21"
     }
 
