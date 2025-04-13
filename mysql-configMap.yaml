@@ -2,7 +2,8 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: db-config
+  namespace: mysql-db
 data:
   dbName: javatechie
-  host: mysql
+  host: mysql.mysql-db.svc.cluster.local
 
