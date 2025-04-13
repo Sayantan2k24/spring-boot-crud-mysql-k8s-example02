@@ -47,7 +47,7 @@ pipeline {
                         export DOCKERHUB_USER=${DOCKERHUB_USER}
                         export IMAGE_NAME=${IMAGE_NAME}
                         export IMAGE_TAG=${IMAGE_TAG}
-                        envsubst < k8s/app-deployment.yaml > k8s/app-deployment-rendered.yaml
+                        envsubst < app-deployment.yaml > app-deployment-rendered.yaml
                     """
 
                     // Apply manifests
