@@ -22,4 +22,7 @@ public class Product {
     private String name;
     private int quantity;
     private double price;
+
+    // ✅ Add this line
+    private String category;
 }
