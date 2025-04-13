@@ -5,7 +5,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = "spring-boot-crud-mysql-k8s-example-2"
-        IMAGE_TAG = "master-${BUILD_NUMBER}"    // or use BRANCH_NAME if you split pipelines
+        IMAGE_TAG = "v1.1.0-${BUILD_NUMBER}"    // or use BRANCH_NAME if you split pipelines
         DOCKERHUB_USER = "sayantan2k21"
     }
 
@@ -13,7 +13,7 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git branch: 'master', url: 'https://github.com/Sayantan2k24/spring-boot-crud-mysql-k8s-example02.git'
+                git branch: 'release/v1.1.0', url: 'https://github.com/Sayantan2k24/spring-boot-crud-mysql-k8s-example02.git'
             }
         }
 
