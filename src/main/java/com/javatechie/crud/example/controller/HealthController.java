@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HealthController {
 
-    private static final String VERSION = "v1.1.0"; // change this per version
+    private static final String VERSION = "v2.0.0"; // change this per version
 
     @GetMapping("/health")
     public String healthCheck() {
