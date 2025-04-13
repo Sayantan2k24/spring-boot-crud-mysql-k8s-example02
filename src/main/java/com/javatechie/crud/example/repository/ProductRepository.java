@@ -17,5 +17,11 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
     List<Product> findByCategoryIgnoreCaseAndPriceBetween(String category, double minPrice, double maxPrice);    
 
 
-}
+    // Additional methods for advanced searching
+    List<Product> findByCategory(String category);
 
+    List<Product> findByPriceBetween(double minPrice, double maxPrice);
+
+    List<Product> findByCategoryAndPriceBetween(String category, double minPrice, double maxPrice);
+
+}
