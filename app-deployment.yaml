@@ -55,5 +55,5 @@ spec:
     - protocol: "TCP"
       port: 9191 # The port that the service is running on in the cluster
       targetPort: 9191 # The port exposed by the service
-  type: NodePort # type of the service.
+  type: ClusterIP # type of the service.
 
