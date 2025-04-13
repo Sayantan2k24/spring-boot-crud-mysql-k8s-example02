@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: springboot-crud-k8s
-          image: sayantan2k21/spring-boot-crud-mysql-k8s-example-2:test2-v1.1.0
+          image: sayantan2k21/spring-boot-crud-mysql-k8s-example-2:test-v2.0.0
           ports:
             - containerPort: 9191
           env:   # Setting Enviornmental Variables
