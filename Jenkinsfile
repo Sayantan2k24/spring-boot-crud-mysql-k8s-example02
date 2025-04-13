@@ -13,7 +13,7 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git branch: 'master', url: 'https://github.com/Sayantan2k24/spring-boot-crud-mysql-k8s-example02.git'
+                git branch: 'release/v1.0.0', url: 'https://github.com/Sayantan2k24/spring-boot-crud-mysql-k8s-example02.git'
             }
         }
 
