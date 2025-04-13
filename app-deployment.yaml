@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: springboot-crud-deployment
+  name: springboot-crud-deployment-v1
   namespace: microservice-v1
 spec:
   selector:
     matchLabels:
-      app: springboot-k8s-mysql
+      app: springboot-k8s-mysql-v1
   replicas: 3
   template:
     metadata:
       labels:
-        app: springboot-k8s-mysql
+        app: springboot-k8s-mysql-v1
     spec:
       containers:
-        - name: springboot-crud-k8s
+        - name: springboot-crud-k8s-v1
           image: ${DOCKERHUB_USER}/${IMAGE_NAME}:${IMAGE_TAG} # sayantan2k21/spring-boot-crud-mysql-k8s-example-2:v1
           ports:
             - containerPort: 9191
@@ -48,11 +48,11 @@ spec:
 apiVersion: v1 # Kubernetes API version
 kind: Service # Kubernetes resource kind we are creating
 metadata: # Metadata of the resource kind we are creating
-  name: springboot-crud-svc
+  name: springboot-crud-svc-v1
   namespace: microservice-v1
 spec:
   selector:
-    app: springboot-k8s-mysql
+    app: springboot-k8s-mysql-v1
   ports:
     - protocol: "TCP"
       port: 9191 # The port that the service is running on in the cluster
