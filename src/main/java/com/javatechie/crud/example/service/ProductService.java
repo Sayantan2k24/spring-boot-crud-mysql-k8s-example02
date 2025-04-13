@@ -36,8 +36,16 @@ public class ProductService {
         return repository.findByNameContainingIgnoreCase(keyword);
     }
 
-    public List<Product> searchByCategoryAndPrice(String category, double minPrice, double maxPrice) {
-        return repository.findByCategoryIgnoreCaseAndPriceBetween(category, minPrice, maxPrice);
+    public List<Product> searchByCategoryAndPrice(String category, Double minPrice, Double maxPrice) {
+        if (category != null && minPrice != null && maxPrice != null) {
+            return repository.findByCategoryAndPriceBetween(category, minPrice, maxPrice);
+        } else if (category != null) {
+            return repository.findByCategory(category);
+        } else if (minPrice != null && maxPrice != null) {
+            return repository.findByPriceBetween(minPrice, maxPrice);
+        } else {
+            return repository.findAll();
+        }
     }
 
     public String deleteProduct(int id) {
@@ -52,6 +60,5 @@ public class ProductService {
         existingProduct.setPrice(product.getPrice());
         return repository.save(existingProduct);
     }
-
 
 }
