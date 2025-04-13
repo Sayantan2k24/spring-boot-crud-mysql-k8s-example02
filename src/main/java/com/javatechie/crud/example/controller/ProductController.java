@@ -48,6 +48,14 @@ public class ProductController {
         return service.searchByName(keyword);
     }
 
+    @GetMapping("/products/searchByCategoryAndPrice")
+    public List<Product> searchByCategoryAndPrice(@RequestParam String category, 
+                                                @RequestParam double minPrice, 
+                                                @RequestParam double maxPrice) {
+        return service.searchByCategoryAndPrice(category, minPrice, maxPrice);
+    }
+
+
     @DeleteMapping("/delete/{id}")
     public String deleteProduct(@PathVariable int id) {
         return service.deleteProduct(id);
