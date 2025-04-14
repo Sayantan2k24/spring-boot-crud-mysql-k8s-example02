@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-v2-config
+  namespace: microservice-v2
+data:
+  dbName: javatechie
+  host: mysql.mysql-db.svc.cluster.local
