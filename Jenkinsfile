@@ -51,9 +51,13 @@ pipeline {
                     """
 
                     // Apply manifests
-                    sh 'kubectl apply -f mysql-configMap.yaml'
-                    sh 'kubectl apply -f mysql-secrets.yaml'
-                    sh 'kubectl apply -f mysql-deployment.yaml'
+                    // sh 'kubectl apply -f mysql-configMap.yaml'
+                    // sh 'kubectl apply -f mysql-secrets.yaml'
+                    // sh 'kubectl apply -f mysql-deployment.yaml'
+
+                    sh 'kubectl apply -f microservice-v1-1-ns.yaml'
+                    sh 'kubectl apply -f app-conigMap.yaml'
+                    sh 'kubectl apply -f app-secrets.yaml'
                     sh 'kubectl apply -f app-deployment-rendered.yaml'
                     sh 'kubectl apply -f ingress.yaml'
                 }
