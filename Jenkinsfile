@@ -20,7 +20,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .'
+                    sh 'docker build --no-cache -t ${IMAGE_NAME}:${IMAGE_TAG} .'
                 }
             }
         }
