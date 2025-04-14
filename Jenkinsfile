@@ -20,7 +20,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .'
+                    sh 'docker build --no-cache -t ${IMAGE_NAME}:${IMAGE_TAG} .'
                 }
             }
         }
@@ -51,9 +51,13 @@ pipeline {
                     """
 
                     // Apply manifests
-                    sh 'kubectl apply -f mysql-configMap.yaml'
-                    sh 'kubectl apply -f mysql-secrets.yaml'
-                    sh 'kubectl apply -f mysql-deployment.yaml'
+                    // sh 'kubectl apply -f mysql-configMap.yaml'
+                    // sh 'kubectl apply -f mysql-secrets.yaml'
+                    // sh 'kubectl apply -f mysql-deployment.yaml'
+
+                    sh 'kubectl apply -f microservice-v2-ns.yaml'
+                    sh 'kubectl apply -f app-conigMap.yaml'
+                    sh 'kubectl apply -f app-secrets.yaml'
                     sh 'kubectl apply -f app-deployment-rendered.yaml'
                     sh 'kubectl apply -f ingress.yaml'
                 }
